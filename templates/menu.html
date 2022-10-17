@@ -7,86 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, 5initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
+    <script src="../script.js">
         // These functions act whenever the button of the same id is pressed and make text appear in a popup.
-        $(document).ready(function(){
-            $("#margherita").click(function () {
-                $("#inForm").append("<br>Margherita Pizza $3.99 <br>");
-            });
-
-            $("#pepperoni").click(function () {
-                $("#inForm").append("<br>Pepperoni Pizza $4.99 <br>");
-            });
-            
-            $("#cheese").click(function () {
-                $("#inForm").append("<br>Cheese Pizza $2.99 <br>");
-            });
-
-            $("#meat").click(function () {
-                $("#inForm").append("<br>Meat Pizza $3.50 <br>");
-            });
-
-            $("#bbq").click(function () {
-                $("#inForm").append("<br>BBQ Chicken $6.50 <br>");
-            });
-
-            $("#hawaii").click(function () {
-                $("#inForm").append("<br>Hawaii Pizza $4.50 <br>");
-            });
-
-            $("#tonno").click(function () {
-                $("#inForm").append("<br>Tonno Pizza $4.50 <br>");
-            });
-
-            $("#funghi").click(function () {
-                $("#inForm").append("<br>Funghi Pizza 4.50 <br>");
-            });
-
-            $("#calzone").click(function () {
-                $("#inForm").append("<br>Calzone Pizza $6.99 <br>");
-            });
-
-            $("#fanta").click(function () {
-                $("#inForm").append("<br>Fanta $2.99 <br>");
-            });
-
-            $("#coca").click(function () {
-                $("#inForm").append("<br>Coca Cola $2.99 <br>");
-            });
-
-            $("#sprite").click(function () {
-                $("#inForm").append("<br>Sprite $2.99 <br>");
-            });
-
-            $("#cassis").click(function () {
-                $("#inForm").append("<br>Cassis $2.99 <br>");
-            });
-
-            $("#drpepper").click(function () {
-                $("#inForm").append("<br>Dr. Pepper $2.99 <br>");
-            });
-
-            $("#pepsi").click(function () {
-                $("#inForm").append("<br>Pepsi $2.99 <br>");
-            });
-
-            $("#lipton").click(function () {
-                $("#inForm").append("<br>Lipton Ice Tea $2.99 <br>");
-            });
-
-            $("#coffee").click(function () {
-                $("#inForm").append("<br>Coffee $3.50 <br>");
-            });
-
-            $("#cappuccino").click(function () {
-                $("#inForm").append("<br>Cappuccino $3.50 <br>");
-            });
-
-            
-
-        });
-
-
     </script>
     <!-- this scripts is for opening the popup and closing it. -->
     <script>
@@ -323,7 +245,7 @@
     <div class="form-popup" id="myForm">
         <form action="/pizza/menu.html" class="form-container">
             <h1 style="padding-left:80px; padding-right:80px; padding-top: 10px;">Order</h1>
-            <p id="inForm"></p>
+            <ul id="inForm"></ul>
             
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
             <button type="button" class="btn" onclick="document.location='pay.html'">Pay</button>
