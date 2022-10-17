@@ -11,7 +11,11 @@
         // These functions act whenever the button of the same id is pressed and make text appear in a popup.
         $(document).ready(function(){
             $("#margherita").click(function () {
-                $("#inForm").append("<br>Margherita Pizza $3.99 <br>");
+                $("#inForm").append("<p class='margherita3'>Margherita Pizza $3.99</p>", '<button id="margherita2" class="button2">Remove</button>');
+            });
+
+            $("#margherita2").click(function () {
+                $(".margherita3").remove();
             });
 
             $("#pepperoni").click(function () {
@@ -102,7 +106,7 @@
 </head>
 
 <body>
-    <img src="pizza and drink/logo.png" style="width:250px; height:100px;" class="center">
+    <img src="static/pizza and drink/logo.png" style="width:250px; height:100px;" class="center">
     <h1>Menu</h1>
 
 
