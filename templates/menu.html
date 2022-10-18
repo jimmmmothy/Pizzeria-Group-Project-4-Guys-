@@ -21,239 +21,261 @@
         }
 
     </script>
+    <script>
+        function openCity(evt, cityName) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(cityName).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+        
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+        </script>
 </head>
 
 <body>
     <img src="../static/pizza and drink/logo.png" style="width:250px; height:100px;" class="center">
     <h1>Menu</h1>
 
-
-    <div class="row">
-        <h2>Pizzas</h2>
-        <div class="column">
-            <img src="../static/pizza and drink/margherita.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Margherita</p>
-                <div class="headercontent">
-                    <p class="headertext">$3.99</p>
-                    <button id="margherita" class="button1">Add</button>
-                    <button id="margherita2" class="button1">Remove</button>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="column">
-            <img src="../static/pizza and drink/pepperoni.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Pepperoni</p>
-                <div class="headercontent">
-                    <p class="headertext">$4.99</p>
-                    <button id="pepperoni" class="button1">Add</button>
-                    <button id="pepperoni2" class="button1">Remove</button>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="column">
-            <img src="../static/pizza and drink/cheese.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Cheese</p>
-                <div class="headercontent">
-                    <p class="headertext">$2.99</p>
-                    <button id="cheese" class="button1">Add</button>
-                    <button id="cheese2" class="button1">Remove</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <img src="../static/pizza and drink/meat.jpg" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Meat Pizza</p>
-                <div class="headercontent">
-                    <p class="headertext">$3.99</p>
-                    <button id="meat" class="button1">Add</button>
-                    <button id="meat2" class="button1">Remove</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <img src="../static/pizza and drink/BBQ.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">BBQ Chicken</p>
-                <div class="headercontent">
-                    <p class="headertext">$6.50</p>
-                    <button id="bbq" class="button1">Add</button>
-                    <button id="bbq2" class="button1">Remove</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <img src="../static/pizza and drink/hawaii.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Pizza Hawaii</p>
-                <div class="headercontent">
-                    <p class="headertext">$4.50</p>
-                    <button id="hawaii" class="button1">Add</button>
-                    <button id="hawaii2" class="button1">Remove</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <img src="../static/pizza and drink/tonno.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Pizza Tonno</p>
-                <div class="headercontent">
-                    <p class="headertext">$4.50</p>
-                    <button id="tonno" class="button1">Add</button>
-                    <button id="tonno2" class="button1">Remove</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <img src="../static/pizza and drink/fungi.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Pizza Funghi</p>
-                <div class="headercontent">
-                    <p class="headertext">$4.50</p>
-                    <button id="funghi" class="button1">Add</button>
-                    <button id="funghi2" class="button1">Remove</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <img src="../static/pizza and drink/calzone.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Pizza Calzone</p>
-                <div class="headercontent">
-                    <p class="headertext">$6.99</p>
-                    <button id="calzone" class="button1">Add</button>
-                    <button id="calzone2" class="button1">Remove</button>
-                </div>
-            </div>
-        </div>
-
+    <div class="tab">
+        <button id='defaultOpen' class="tablinks" onclick="openCity(event, 'Pizza')">Pizza</button>
+        <button class="tablinks" onclick="openCity(event, 'Drinks')">Drinks</button>
     </div>
 
     <div class="row">
-        <h2>Drinks</h2>
-        <div class="column">
-            <img src="../static/pizza and drink/fanta.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Fanta</p>
-                <div class="headercontent">
-                    <p class="headertext">$2.99</p>
-                    <button id="fanta" class="button1">Add</button>
-                    <button id="fanta2" class="button1">Remove</button>
-                </div>
+        <div id="Pizza" class="tabcontent">
+            <div class="column">
+                <img src="../static/pizza and drink/margherita.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Margherita</p>
+                    <div class="headercontent">
+                        <p class="headertext">$3.99</p>
+                        <button id="margherita" class="button1">Add</button>
+                        <button id="margherita2" class="button1">Remove</button>
+                    </div>
 
-            </div>
-        </div>
-
-        <div class="column">
-            <img src="../static/pizza and drink/cocacola.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Coca Cola</p>
-                <div class="headercontent">
-                    <p class="headertext">$2.99</p>
-                    <button id="coca" class="button1">Add</button>
-                    <button id="coca2" class="button1">Remove</button>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="column">
-            <img src="../static/pizza and drink/sprite.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Sprite</p>
-                <div class="headercontent">
-                    <p class="headertext">$2.99</p>
-                    <button id="sprite" class="button1">Add</button>
-                    <button id="sprite2" class="button1">Remove</button>
                 </div>
             </div>
-        </div>
 
-        <div class="column">
-            <img src="../static/pizza and drink/cassis.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Cassis</p>
-                <div class="headercontent">
-                    <p class="headertext">$2.99</p>
-                    <button id="cassis" class="button1">Add</button>
-                    <button id="cassis2" class="button1">Remove</button>
+            <div class="column">
+                <img src="../static/pizza and drink/pepperoni.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Pepperoni</p>
+                    <div class="headercontent">
+                        <p class="headertext">$4.99</p>
+                        <button id="pepperoni" class="button1">Add</button>
+                        <button id="pepperoni2" class="button1">Remove</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="column">
+                <img src="../static/pizza and drink/cheese.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Cheese</p>
+                    <div class="headercontent">
+                        <p class="headertext">$2.99</p>
+                        <button id="cheese" class="button1">Add</button>
+                        <button id="cheese2" class="button1">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <img src="../static/pizza and drink/meat.jpg" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Meat Pizza</p>
+                    <div class="headercontent">
+                        <p class="headertext">$3.99</p>
+                        <button id="meat" class="button1">Add</button>
+                        <button id="meat2" class="button1">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <img src="../static/pizza and drink/BBQ.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">BBQ Chicken</p>
+                    <div class="headercontent">
+                        <p class="headertext">$6.50</p>
+                        <button id="bbq" class="button1">Add</button>
+                        <button id="bbq2" class="button1">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <img src="../static/pizza and drink/hawaii.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Pizza Hawaii</p>
+                    <div class="headercontent">
+                        <p class="headertext">$4.50</p>
+                        <button id="hawaii" class="button1">Add</button>
+                        <button id="hawaii2" class="button1">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <img src="../static/pizza and drink/tonno.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Pizza Tonno</p>
+                    <div class="headercontent">
+                        <p class="headertext">$4.50</p>
+                        <button id="tonno" class="button1">Add</button>
+                        <button id="tonno2" class="button1">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <img src="../static/pizza and drink/fungi.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Pizza Funghi</p>
+                    <div class="headercontent">
+                        <p class="headertext">$4.50</p>
+                        <button id="funghi" class="button1">Add</button>
+                        <button id="funghi2" class="button1">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <img src="../static/pizza and drink/calzone.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Pizza Calzone</p>
+                    <div class="headercontent">
+                        <p class="headertext">$6.99</p>
+                        <button id="calzone" class="button1">Add</button>
+                        <button id="calzone2" class="button1">Remove</button>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="column">
-            <img src="../static/pizza and drink/drpepper.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Dr. Pepper</p>
-                <div class="headercontent">
-                    <p class="headertext">$2.99</p>
-                    <button id="drpepper" class="button1">Add</button>
-                    <button id="drpepper2" class="button1">Remove</button>
+    <div class="row">
+        <div id="Drinks" class="tabcontent">
+            <div class="column">
+                <img src="../static/pizza and drink/fanta.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Fanta</p>
+                    <div class="headercontent">
+                        <p class="headertext">$2.99</p>
+                        <button id="fanta" class="button1">Add</button>
+                        <button id="fanta2" class="button1">Remove</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="column">
+                <img src="../static/pizza and drink/cocacola.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Coca Cola</p>
+                    <div class="headercontent">
+                        <p class="headertext">$2.99</p>
+                        <button id="coca" class="button1">Add</button>
+                        <button id="coca2" class="button1">Remove</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="column">
+                <img src="../static/pizza and drink/sprite.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Sprite</p>
+                    <div class="headercontent">
+                        <p class="headertext">$2.99</p>
+                        <button id="sprite" class="button1">Add</button>
+                        <button id="sprite2" class="button1">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <img src="../static/pizza and drink/cassis.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Cassis</p>
+                    <div class="headercontent">
+                        <p class="headertext">$2.99</p>
+                        <button id="cassis" class="button1">Add</button>
+                        <button id="cassis2" class="button1">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <img src="../static/pizza and drink/drpepper.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Dr. Pepper</p>
+                    <div class="headercontent">
+                        <p class="headertext">$2.99</p>
+                        <button id="drpepper" class="button1">Add</button>
+                        <button id="drpepper2" class="button1">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <img src="../static/pizza and drink/pepsi.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Pepsi</p>
+                    <div class="headercontent">
+                        <p class="headertext">$2.99</p>
+                        <button id="pepsi" class="button1">Add</button>
+                        <button id="pepsi2" class="button1">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <img src="../static/pizza and drink/lipton.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Lipton Ice Tea</p>
+                    <div class="headercontent">
+                        <p class="headertext">$2.99</p>
+                        <button id="lipton" class="button1">Add</button>
+                        <button id="lipton2" class="button1">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <img src="../static/pizza and drink/coffee.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Coffee</p>
+                    <div class="headercontent">
+                        <p class="headertext">$3.50</p>
+                        <button id="coffee" class="button1">Add</button>
+                        <button id="coffee2" class="button1">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <img src="../static/pizza and drink/cappuccino.png" class="menu">
+                <div class="menuheader">
+                    <p style="padding-top:5px;">Cappuccino</p>
+                    <div class="headercontent">
+                        <p class="headertext">$3.50</p>
+                        <button id="cappuccino" class="button1">Add</button>
+                        <button id="cappuccino2" class="button1">Remove</button>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="column">
-            <img src="../static/pizza and drink/pepsi.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Pepsi</p>
-                <div class="headercontent">
-                    <p class="headertext">$2.99</p>
-                    <button id="pepsi" class="button1">Add</button>
-                    <button id="pepsi2" class="button1">Remove</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <img src="../static/pizza and drink/lipton.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Lipton Ice Tea</p>
-                <div class="headercontent">
-                    <p class="headertext">$2.99</p>
-                    <button id="lipton" class="button1">Add</button>
-                    <button id="lipton2" class="button1">Remove</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <img src="../static/pizza and drink/coffee.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Coffee</p>
-                <div class="headercontent">
-                    <p class="headertext">$3.50</p>
-                    <button id="coffee" class="button1">Add</button>
-                    <button id="coffee2" class="button1">Remove</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <img src="../static/pizza and drink/cappuccino.png" class="menu">
-            <div class="menuheader">
-                <p style="padding-top:5px;">Cappuccino</p>
-                <div class="headercontent">
-                    <p class="headertext">$3.50</p>
-                    <button id="cappuccino" class="button1">Add</button>
-                    <button id="cappuccino2" class="button1">Remove</button>
-                </div>
-            </div>
-        </div>
-
     </div>
 
     <!-- A button to open the popup form -->
@@ -264,7 +286,7 @@
         <form action="/pay" class="form-container">
             <h1 style="padding-left:80px; padding-right:80px; padding-top: 10px;">Order</h1>
             <ul id="inForm"></ul>
-            
+
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
             <button type="button" class="btn" onclick="pay()">Pay</button>
         </form>
