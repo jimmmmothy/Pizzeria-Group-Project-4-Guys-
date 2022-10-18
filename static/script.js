@@ -59,6 +59,8 @@ function pay() {
         body: JSON.stringify(order)
     }).then(res => {
         console.log("Request complete! response:", res)
+
+        window.location.replace('complete')
     });
 }
 
