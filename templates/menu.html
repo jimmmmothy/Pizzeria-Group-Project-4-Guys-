@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, 5initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../script.js">
+    <script src="{{ url_for('static', filename='script.js') }}">
         // These functions act whenever the button of the same id is pressed and make text appear in a popup.
     </script>
     <!-- this scripts is for opening the popup and closing it. -->
@@ -266,7 +266,7 @@
             <ul id="inForm"></ul>
             
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-            <button type="button" class="btn" onclick="document.location='pay.html'">Pay</button>
+            <button type="button" class="btn" onclick="pay()">Pay</button>
         </form>
     </div>
 

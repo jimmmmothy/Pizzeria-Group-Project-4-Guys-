@@ -52,6 +52,16 @@ function removeOrder(orderName) {
     renderOrder()
 }
 
+function pay() {
+    fetch("/pay", {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'}, 
+        body: JSON.stringify(order)
+    }).then(res => {
+        console.log("Request complete! response:", res)
+    });
+}
+
 $(document).ready(function(){
     $("#margherita").click(function () {
         addOrder("Margherita")

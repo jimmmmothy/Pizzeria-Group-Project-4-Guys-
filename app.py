@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
@@ -6,10 +6,16 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/menu.html')
+@app.route('/menu')
 def menu():
     return render_template('menu.html')
 
-@app.route('/pay.html')
+@app.route('/pay', methods = ['POST'])
 def pay():
-    return render_template('pay.html')
+    temp = request.get_json()
+    print(temp)
+    return redirect('/complete')
+
+@app.route('/complete')
+def complete():
+    return render_template('complete.html')
