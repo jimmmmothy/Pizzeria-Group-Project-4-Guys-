@@ -20,13 +20,7 @@ let prices = {
     "Cappuccino": 3.50
 }
 
-function addOrder(orderName) {
-    if (order[orderName] == null) {
-        order[orderName] = 1
-    } else {
-        order[orderName] += 1
-    }
-
+function renderOrder() {
     inForm = document.getElementById("inForm")
     inForm.innerHTML = ""
 
@@ -38,76 +32,150 @@ function addOrder(orderName) {
     }
 }
 
+function addOrder(orderName) {
+    if (order[orderName] == null) {
+        order[orderName] = 1
+    } else {
+        order[orderName] += 1
+    }
+
+    renderOrder()
+}
+
+function removeOrder(orderName) {
+    if (order[orderName] > 1) {
+        order[orderName] -= 1
+    } else if (order[orderName] == 1) {
+        delete order[orderName]
+    }
+
+    renderOrder()
+}
+
 $(document).ready(function(){
     $("#margherita").click(function () {
         addOrder("Margherita")
+    });
+    $("#margherita2").click(function () {
+        removeOrder("Margherita")
     });
 
     $("#pepperoni").click(function () {
         addOrder("Pepperoni")
     });
+    $("#pepperoni2").click(function () {
+        removeOrder("Pepperoni")
+    });
             
     $("#cheese").click(function () {
         addOrder("Cheese")
+    });
+    $("#cheese2").click(function () {
+        removeOrder("Cheese")
     });
 
     $("#meat").click(function () {
         addOrder("Meat")
     });
+    $("#meat2").click(function () {
+        removeOrder("Meat")
+    });
 
     $("#bbq").click(function () {
         addOrder("BBQ Chicken")
+    });
+    $("#bbq2").click(function () {
+        removeOrder("BBQ Chicken")
     });
 
     $("#hawaii").click(function () {
         addOrder("Hawaii")
     });
+    $("#hawaii2").click(function () {
+        removeOrder("Hawaii")
+    });
 
     $("#tonno").click(function () {
         addOrder("Tonno")
+    });
+    $("#tonno2").click(function () {
+        removeOrder("Tonno")
     });
     
     $("#funghi").click(function () {
         addOrder("Funghi")
     });
+    $("#funghi2").click(function () {
+        removeOrder("Funghi")
+    });
 
     $("#calzone").click(function () {
         addOrder("Calzone")
+    });
+    $("#calzone2").click(function () {
+        removeOrder("Calzone")
     });
 
     $("#fanta").click(function () {
         addOrder("Fanta")
     });
+    $("#fanta2").click(function () {
+        removeOrder("Fanta")
+    });
 
     $("#coca").click(function () {
         addOrder("Coca Cola")
+    });
+    $("#coca2").click(function () {
+        removeOrder("Coca Cola")
     });
 
     $("#sprite").click(function () {
         addOrder("Sprite")
     });
+    $("#sprite2").click(function () {
+        removeOrder("Sprite")
+    });
 
     $("#cassis").click(function () {
         addOrder("Cassis")
+    });
+    $("#cassis2").click(function () {
+        removeOrder("Cassis")
     });
 
     $("#drpepper").click(function () {
         addOrder("Dr. Pepper")
     });
+    $("#drpepper2").click(function () {
+        removeOrder("Dr. Pepper")
+    });
 
     $("#pepsi").click(function () {
         addOrder("Pepsi")
+    });
+    $("#pepsi2").click(function () {
+        removeOrder("Pepsi")
     });
 
     $("#lipton").click(function () {
         addOrder("Lipton")
     });
+    $("#lipton2").click(function () {
+        removeOrder("Lipton")
+    });
 
     $("#coffee").click(function () {
         addOrder("Coffee")
     });
+    $("#coffee2").click(function () {
+        removeOrder("Coffee")
+    });
 
     $("#cappuccino").click(function () {
         addOrder("Capuccino")
+    });
+    $("#cappuccino2").click(function () {
+        removeOrder("Capuccino")
     });
 });
