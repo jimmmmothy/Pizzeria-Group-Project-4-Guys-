@@ -10,72 +10,49 @@
 
 <body>
     <img src="../static/pizza and drink/logo.png" style="width:250px; height:100px;" class="center">
+    
+    <div class="headercontent">
+        <h1>Incoming orders</h1>
+        <h1>Ready</h1>
+    </div>
+    
+    {%for item in order%}
+
     <div class="row">
         <div class="headercontent">
-            <h1>Incoming orders</h1>
-            <h1>Ready</h1>
-        </div>
-        <div class="headercontent">
             <div class="menuheader">
-                <h2>BBQ Pizza<br>Table#2<br><br>
-                    <form action="/action_page.php">
+                <h2><p>{{item[1]}}</p><p>Table#{{item[0]}}</p><br>
+                    
                     <div class="headercontent">
                         <input type="checkbox" id="preparing" name="preparing" value="preparing">
                         <label for="preparing"> Preparing</label><br>
                         <input type="checkbox" id="inOven" name="inOven" value="inOven">
                         <label for="inOven"> In oven</label><br><br>
-                        <input type="submit" value="Submit">
+                        <input type="button" value="Ready" onclick="readyOrder(this)">
                     </div>
-                </form></h2>
+                </h2>
             </div>
-            <div class="menuheader">
+            <!-- <div class="menuheader">
                 <h2>Pizza Calzone<br>Table#1</h2>
-            </div>
+            </div> -->
         </div>
     </div>
 
-    <div class="row">
-        <br>
-        <div class="headercontent">
-            <div class="menuheader">
-                <h2>Cheese Pizza<br>Table#5<br><br>
-                    <form action="/action_page.php">
-                    <div class="headercontent">
-                        <input type="checkbox" id="preparing" name="preparing" value="preparing">
-                        <label for="preparing"> Preparing</label><br>
-                        <input type="checkbox" id="inOven" name="inOven" value="inOven">
-                        <label for="inOven"> In oven</label><br><br>
-                        <input type="submit" value="Submit">
-                    </div>
-                </form></h2>
-            </div>
-            <div class="menuheader">
-                <h2>Pizza Hawaii<br>Table#10</h2>
-            </div>
-        </div>
-    </div>
+    {%endfor%}
 
-    <div class="row">
-        <br>
-        <div class="headercontent">
-            <div class="menuheader">
-                <h2>Cheese Pizza<br>Table#8<br><br>
-                    <form action="/action_page.php">
-                    <div class="headercontent">
-                        <input type="checkbox" id="preparing" name="preparing" value="preparing">
-                        <label for="preparing"> Preparing</label><br>
-                        <input type="checkbox" id="inOven" name="inOven" value="inOven">
-                        <label for="inOven"> In oven</label><br><br>
-                        <input type="submit" value="Submit">
-                    </div>
-                </form></h2>
-            </div>
-            <div class="menuheader">
-                <h2>Pizza Funghi<br>Table#11</h2>
-            </div>
-        </div>
-    </div>
+    <script>
+        function readyOrder(currentElement) {
+            let nodeList = currentElement.parentElement.parentElement.childNodes
+            let item = nodeList[0].textContent
+            let tableNumber = nodeList[1].textContent.slice(-1)
 
+            if (tableNumber == 0) {
+                tableNumber = 10
+            }
+
+            //TODO: post to flask server
+        }
+    </script>
 </body>
 
 </html>

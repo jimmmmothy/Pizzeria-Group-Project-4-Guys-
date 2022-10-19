@@ -44,7 +44,6 @@ def countdown(seconds):
     isFull = False
 
 def cook():
-    board.digital_pin_write(LED_PINS["yellow"], 0)
     board.digital_pin_write(LED_PINS["green"], 0)
     countdown(10) # TODO: Figure out how to input this time
     board.digital_pin_write(LED_PINS["green"], 1)
