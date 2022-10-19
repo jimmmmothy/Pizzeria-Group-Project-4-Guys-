@@ -141,7 +141,7 @@
   
   /* Style the buttons that are used to open the tab content */
   .tab button {
-    background-color: rgba(254, 241, 108, 255);
+    background-color: gray;
     float: left;
     border: none;
     outline: none;
@@ -157,7 +157,7 @@
   
   /* Create an active/current tablink class */
   .tab button.active {
-    background-color: gray;
+    background-color: rgba(254, 241, 108, 255);
   }
   
   /* Style the tab content */
