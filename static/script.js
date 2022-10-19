@@ -26,7 +26,7 @@ function renderOrder() {
 
     for (let key in order) {
         let listItem = document.createElement('li')
-        listItem.textContent = `${order[key]}x ${key} - ${order[key] * prices[key]}`
+        listItem.textContent = `${order[key]}x ${key} - ${(order[key] * prices[key]).toFixed(2)}.`
 
         inForm.appendChild(listItem)
     }
@@ -53,6 +53,9 @@ function removeOrder(orderName) {
 }
 
 function pay() {
+    order["orderNumber"] = Math.floor(Math.random() * 10) + 1 // random order number between 1 and 10
+
+    // posting to the flask server
     fetch("/pay", {
         method: "POST",
         headers: {'Content-Type': 'application/json'}, 
@@ -64,6 +67,7 @@ function pay() {
     });
 }
 
+// all the onclick functions for the items in the menu
 $(document).ready(function(){
     $("#margherita").click(function () {
         addOrder("Margherita")
