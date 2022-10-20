@@ -9,57 +9,56 @@
 </head>
 
 <body>
-    <img src="../static/pizza and drink/logo.png" style="width:250px; height:100px;" class="center">
-
-    {%for item in order%}
-
     <div class="split left">
         <h1>Incoming Orders</h1>
+
+        {%for item in pendingOrders%}
+
         <div class="menuheader">
             <h3>{{item[1]}}</h3>
             <h3>Table#{{item[0]}}</h3><br>
             <p>
             <div class="headercontent">
-                <input type="checkbox" id="preparing" name="preparing" value="preparing">
-                <label for="preparing"> Preparing</label><br>
                 <input type="checkbox" id="inOven" name="inOven" value="inOven">
                 <label for="inOven"> In oven</label><br><br>
                 <input type="button" value="Ready" onclick="readyOrder(this)">
             </div>
             </p>
         </div>
+
+        {%endfor%}
     </div>
+
 
     <div class="split right">
         <h2>Ready</h2>
+
+        {%for item in readyOrders%}
+
         <div class="menuheader2">
             <h3>{{item[1]}}</h3>
             <h3>Table#{{item[0]}}</h3><br>
-            <p>
-            <div class="headercontent">
-                <input type="checkbox" id="preparing" name="preparing" value="preparing">
-                <label for="preparing"> Preparing</label><br>
-                <input type="checkbox" id="inOven" name="inOven" value="inOven">
-                <label for="inOven"> In oven</label><br><br>
-                <input type="button" value="Ready" onclick="readyOrder(this)">
-            </div>
-            </p>
         </div>
-    </div>
 
-    {%endfor%}
+        {%endfor%}
+    </div>
 
     <script>
         function readyOrder(currentElement) {
             let nodeList = currentElement.parentElement.parentElement.childNodes
-            let item = nodeList[0].textContent
-            let tableNumber = nodeList[1].textContent.slice(-1)
+            let item = nodeList[1].textContent
+            let tableNumber = nodeList[3].textContent.split('#')[1]
 
-            if (tableNumber == 0) {
-                tableNumber = 10
-            }
-
-            //TODO: post to flask server
+            fetch("/order-ready", {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'}, 
+                body: JSON.stringify({
+                    item,
+                    tableNumber
+                })
+            }).then(res => {
+                console.log("Request complete! response:", res)
+            });
         }
     </script>
 </body>
