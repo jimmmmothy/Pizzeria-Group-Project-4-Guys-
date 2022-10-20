@@ -10,31 +10,40 @@
 
 <body>
     <img src="../static/pizza and drink/logo.png" style="width:250px; height:100px;" class="center">
-    
-    <div class="headercontent">
-        <h1>Incoming orders</h1>
-        <h1>Ready</h1>
-    </div>
-    
+
     {%for item in order%}
 
-    <div class="row">
-        <div class="headercontent">
-            <div class="menuheader">
-                <h2><p>{{item[1]}}</p><p>Table#{{item[0]}}</p><br>
-                    
-                    <div class="headercontent">
-                        <input type="checkbox" id="preparing" name="preparing" value="preparing">
-                        <label for="preparing"> Preparing</label><br>
-                        <input type="checkbox" id="inOven" name="inOven" value="inOven">
-                        <label for="inOven"> In oven</label><br><br>
-                        <input type="button" value="Ready" onclick="readyOrder(this)">
-                    </div>
-                </h2>
+    <div class="split left">
+        <h1>Incoming Orders</h1>
+        <div class="menuheader">
+            <h3>{{item[1]}}</h3>
+            <h3>Table#{{item[0]}}</h3><br>
+            <p>
+            <div class="headercontent">
+                <input type="checkbox" id="preparing" name="preparing" value="preparing">
+                <label for="preparing"> Preparing</label><br>
+                <input type="checkbox" id="inOven" name="inOven" value="inOven">
+                <label for="inOven"> In oven</label><br><br>
+                <input type="button" value="Ready" onclick="readyOrder(this)">
             </div>
-            <!-- <div class="menuheader">
-                <h2>Pizza Calzone<br>Table#1</h2>
-            </div> -->
+            </p>
+        </div>
+    </div>
+
+    <div class="split right">
+        <h2>Ready</h2>
+        <div class="menuheader2">
+            <h3>{{item[1]}}</h3>
+            <h3>Table#{{item[0]}}</h3><br>
+            <p>
+            <div class="headercontent">
+                <input type="checkbox" id="preparing" name="preparing" value="preparing">
+                <label for="preparing"> Preparing</label><br>
+                <input type="checkbox" id="inOven" name="inOven" value="inOven">
+                <label for="inOven"> In oven</label><br><br>
+                <input type="button" value="Ready" onclick="readyOrder(this)">
+            </div>
+            </p>
         </div>
     </div>
 
