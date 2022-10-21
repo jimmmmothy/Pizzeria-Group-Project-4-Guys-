@@ -1,7 +1,9 @@
 import csv
+import oven
 from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
+setupDone = False
 
 @app.route('/')
 def index():
@@ -41,6 +43,11 @@ def staff():
     pendingOrders = read_file("pending_orders.csv")
     readyOrders = read_file("ready_orders.csv")
 
+    global setupDone
+    if not setupDone:
+        oven.setup()
+        setupDone = True
+
     return render_template('luigi.html', pendingOrders=pendingOrders, readyOrders=readyOrders)
 
 @app.route('/order-ready', methods=["POST"])
@@ -50,9 +57,13 @@ def order_ready():
 
     order = read_file("pending_orders.csv")
 
+    oven.cook()
+
     order.remove(itemAsList)
     update_file("pending_orders.csv", order)
     append_file("ready_orders.csv", [itemAsList])
+
+    oven.buzz()
 
     return redirect('/staff')
 

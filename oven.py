@@ -11,7 +11,7 @@ LED_PINS = {
     "blue": 6,
     "yellow": 7 
 }
-BUTTON1PIN = 8
+BUZZERPIN = 3
 DHTPIN  = 12
 
 #-----------
@@ -22,7 +22,7 @@ def setup(): # Taken from examples
     board = CustomPymata4(com_port = "COM3")
     board.displayOn()
     board.set_pin_mode_dht(DHTPIN, sensor_type=11, differential=.05)
-    board.set_pin_mode_digital_input_pullup(BUTTON1PIN)
+    board.set_pin_mode_pwm_output(BUZZERPIN)
     for pin in LED_PINS:
         board.set_pin_mode_digital_output(LED_PINS[pin])
 
@@ -48,22 +48,13 @@ def cook():
     countdown(10) # TODO: Figure out how to input this time
     board.digital_pin_write(LED_PINS["green"], 1)
 
-    #humidity, temperature, timestamp = board.dht_read(DHTPIN) might not need temperature
-
-def main():
-    buttonState = board.digital_read(BUTTON1PIN)[0]
-
-    if buttonState == 0:
-        cook()
+def buzz():
+    for i in range(3):
+        board.pwm_write(BUZZERPIN, 1)
+        time.sleep(0.8)
+        board.pwm_write(BUZZERPIN, 0)
+        time.sleep(0.8)
 
 def exit():
     board.shutdown()
     sys.exit(0)
-
-setup()
-
-while True:
-    try:
-        main()  
-    except KeyboardInterrupt: # crtl+C
-        exit()
