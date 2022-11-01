@@ -4,6 +4,28 @@ from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 setupDone = False
+drinks = [
+    "Fanta",
+    "Coca Cola",
+    "Sprite",
+    "Cassis",
+    "Dr. Pepper",
+    "Pepsi",
+    "Lipton",
+    "Coffee",
+    "Cappuccino"
+]
+
+pizzas = [
+    "Margherita",
+    "Pepperoni",
+    "Cheese",
+    "Meat",
+    "BBQ Chicken",
+    "Hawaii",
+    "Tonno",
+    "Funghi",
+    "Calzone"]
 
 @app.route('/')
 def index():
@@ -27,6 +49,10 @@ def pay():
                 item = []
                 item.append(order["orderNumber"])
                 item.append(key)
+                if key in pizzas:
+                    item.append('pizza')
+                elif key in drinks:
+                    item.append('drink')
                 orderData.append(item)
 
     # writing the order in a csv file
@@ -50,10 +76,10 @@ def staff():
 
     return render_template('luigi.html', pendingOrders=pendingOrders, readyOrders=readyOrders)
 
-@app.route('/order-ready', methods=["POST"])
-def order_ready():
+@app.route('/pizza-ready', methods=["POST"])
+def pizza_ready():
     item = request.json
-    itemAsList = [item["tableNumber"], item["item"]]
+    itemAsList = [item["tableNumber"], item["item"], item["type"]]
 
     order = read_file("pending_orders.csv")
 
@@ -65,6 +91,18 @@ def order_ready():
 
     oven.buzz()
 
+    return redirect('/staff')
+
+@app.route('/drink-ready', methods=["POST"])
+def drink_ready():
+    item = request.json
+    itemAsList = [item["tableNumber"], item["item"], item["type"]]
+
+    order = read_file("pending_orders.csv")
+
+    order.remove(itemAsList)
+    update_file("pending_orders.csv", order)
+    append_file("ready_orders.csv", [itemAsList])
     return redirect('/staff')
 
 def append_file(file, order):

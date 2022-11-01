@@ -38,6 +38,7 @@
 
         function click() {
             document.getElementById("defaultOpen").click();
+            showTable()
         }
     </script>
 </head>
@@ -45,6 +46,7 @@
 <body onload="click()">
     <img src="../static/pizza and drink/logo.png" style="width:250px; height:100px;" class="center">
     <h1>Menu</h1>
+    <h1 id="table-number"></h1>
 
     <div class="tab">
         <button class="tablinks" onclick="openMenu(event, 'Pizza')" id="defaultOpen">Pizza</button>

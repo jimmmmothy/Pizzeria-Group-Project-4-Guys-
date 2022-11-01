@@ -14,17 +14,29 @@
 
         {%for item in pendingOrders%}
 
+        {%if item[2] == "pizza"%}
         <div class="menuheader">
             <h3>{{item[1]}}</h3>
             <h3>Table#{{item[0]}}</h3><br>
             <p>
             <div class="headercontent">
-                <input type="checkbox" id="inOven" name="inOven" value="inOven">
-                <label for="inOven"> In oven</label><br><br>
-                <input type="button" value="Ready" onclick="readyOrder(this)">
+                <input type="button" value="Cook pizza" onclick="readyOrder(this, 'pizza')">
             </div>
             </p>
         </div>
+        {%endif%}
+
+        {%if item[2] == "drink"%}
+        <div class="menuheader">
+            <h3>{{item[1]}}</h3>
+            <h3>Table#{{item[0]}}</h3><br>
+            <p>
+            <div class="headercontent">
+                <input type="button" value="Deliver drink" onclick="readyOrder(this, 'drink')">
+            </div>
+            </p>
+        </div>
+        {%endif%}
 
         {%endfor%}
     </div>
@@ -44,17 +56,18 @@
     </div>
 
     <script>
-        function readyOrder(currentElement) {
+        function readyOrder(currentElement, type) {
             let nodeList = currentElement.parentElement.parentElement.childNodes
             let item = nodeList[1].textContent
             let tableNumber = nodeList[3].textContent.split('#')[1]
 
-            fetch("/order-ready", {
+            fetch(`/${type}-ready`, {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'}, 
                 body: JSON.stringify({
                     item,
-                    tableNumber
+                    tableNumber,
+                    type
                 })
             }).then(res => {
                 console.log("Request complete! response:", res)

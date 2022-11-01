@@ -20,6 +20,11 @@ let prices = {
     "Cappuccino": 3.50
 }
 
+tableNumber = Math.floor(Math.random() * 10) + 1
+function showTable() {
+    document.getElementById('table-number').textContent = `Table #${tableNumber}`
+}
+
 function renderOrder() {
     inForm = document.getElementById("inForm")
     inForm.innerHTML = ""
@@ -53,7 +58,7 @@ function removeOrder(orderName) {
 }
 
 function pay() {
-    order["orderNumber"] = Math.floor(Math.random() * 10) + 1 // random order number between 1 and 10
+    order["orderNumber"] = tableNumber 
 
     // posting to the flask server
     fetch("/pay", {
